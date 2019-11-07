@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchPosts, fetchUser} from '../actions';
+import {fetchUser} from '../actions';
 
 class UserHeader extends Component {
     componentDidMount() {
@@ -8,7 +8,7 @@ class UserHeader extends Component {
     }
 
     render() {
-        const user = this.props.users.find((user) => user.id === this.props.userId);
+        const { user } = this.props;
 
         if (!user) {
             return <div>Loading...</div>;
@@ -18,9 +18,9 @@ class UserHeader extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        users: state.users
+        user: state.users.find(user => user.id === ownProps.userId)
     }
 };
 
