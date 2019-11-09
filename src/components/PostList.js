@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPostsAndUsers } from '../actions';
 import UserHeader from './UserHeader';
+import PostComments from "./PostComments";
 
 class PostList extends Component {
     componentDidMount() {
@@ -12,7 +13,7 @@ class PostList extends Component {
         return this.props.posts.map(post => {
             return (
                 <div className="item" key={post.id}>
-                    <i className="large middle aligned icon user blue" />
+                    <i className="large top aligned icon user blue" />
                     <div className="content">
                         <div className="description">
                             <h2>{post.title}</h2>
@@ -21,6 +22,7 @@ class PostList extends Component {
                         <div>
                             <UserHeader userId={post.userId}/>
                         </div>
+                            <PostComments postId={post.id}/>
                     </div>
                 </div>
             )
