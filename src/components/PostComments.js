@@ -17,7 +17,6 @@ class PostComments extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    //console.log({state, ownProps});
     return {
         comments: state.comments.filter(comments => comments.postId === ownProps.postId)
     }
